@@ -1,0 +1,54 @@
+{% extends "./base.html" %}
+
+{% block home %}active{% endblock home %}
+
+{% block title %}Home-FileSystem{% endblock %}
+
+
+{% block body %}
+
+
+<div class="container marketing ">
+
+<hr>
+<hr>
+<hr>
+<hr>
+<hr>
+
+  <!-- Three columns of text below the carousel -->
+    <div class='my-4'>
+  <div class="row my-2 col-xs col-sm col-md ">
+    <div class="col-lg-6">
+{% if user.is_authenticated %}
+      <img src='/static/img/user.png' class="rounded-circle card img-fluid align-items-center mx-4" style="width: 8rem;"
+        alt="user">
+      <h2 class='mx-4'> {{user.first_name}} {{user.last_name}}</h2>
+  
+      <p><a class="btn btn-primary mx-4 my-1" href="/file" role="button">Store here &raquo;</a></p>
+    </div><!-- /.col-lg-4 -->
+<div class="col-lg-6 my-4"><div class='my-4'><h3 class='my-4'>Hi  {{user.first_name}} {{user.last_name}} you can easily Store Your Files to our System . Your Data will be Stored Securly you Don't need borther about your Privicy your Data is Secure on our Website </h3></div></div>
+
+{% else %}
+      <img src='/static/img/user.png' class="rounded-circle card img-fluid align-items-center mx-4" style="width: 8rem;"
+        alt="decrypt">
+      <h2 class='mx-4'>Please Login To Store Your Files</h2>
+  
+     <button type="button" class="btn btn-success mx-4 mr-2" data-toggle="modal" data-target="#loginModal">
+          login here &raquo;
+        </button>
+    </div><!-- /.col-lg-4 -->
+<div class="col-lg-6 my-4"><div class='my-4'><h3 class='my-4'>Hi ,You can easily Store Your Files to our System . Your Data will be Stored Securly you Don't need borther about your Privicy your Data is Secure on our Website </h3></div></div>
+{% endif %}
+  </div><!-- /.row -->
+    <hr>
+    <hr>
+    <hr>
+    <hr>
+    <hr>
+  </div><!-- /.row -->
+
+  <div class="container ">
+   
+
+  {% endblock %}

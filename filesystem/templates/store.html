@@ -1,0 +1,96 @@
+{% extends './base.html' %}
+
+{% block title %} Stored_Files-CryptoFile {% endblock %}
+{% load humanize %}
+{% block body %}
+
+<div class="container ">
+        <div class="row justify-content-center">
+            <div class="title col-12 col-lg-8">
+             <h6 class="mbr-section-title align-center pb-3 mbr-fonts-style display-2">Stored Files</h6>
+{% if page_obj|length < 1 %}
+
+  <table class="table table-striped ">
+  <thead class="thead-dark">
+    <tr>
+      <th scope="col"></th>
+      <th scope="col">Filename</th>
+      <th scope="col">Time</th>
+      <th scope="col">Files</th>
+    </tr>
+  </thead>
+  </table>
+  <h6 class="mbr-section-title align-center pb-3 mbr-fonts-style display-4">Yet No File Stored</h6>
+
+
+  {% else %}
+
+
+  <table class="table table-striped ">
+  <thead class="thead-dark">
+    <tr>
+      <th scope="col"></th>
+      <th scope="col">Filename</th>
+      <th scope="col">Time</th>
+      <th scope="col">Files</th>
+    </tr>
+  </thead>
+  <tbody>
+   {% for e in page_obj %}
+    <tr>
+      <th scope="row" style=" font-size:28px">&#8859;</th>
+      <td>{{e.filename}}</td>
+      <td>{{e.date|naturaltime}}</td>
+      <td><a href="/{{e}}" download> <button class="btn btn-primary" >Download</button></a></td>
+    </tr>
+      {% endfor %}
+    </tbody>
+    </table>
+
+<nav aria-label="Page navigation ">
+  <ul class="pagination justify-content-center">
+    <li class="page-item ">
+    {% if page_obj.has_previous %}
+      <a class="page-link previous round" href="?page={{page_obj.previous_page_number}}" tabindex="-1"><</a>
+      {% endif %}
+    </li>
+    <li class="page-item"><a class="page-link round px-md-2" href="?page={{page_obj.number}}">{{page_obj.number}}</a></li>
+    <li class="page-item next round">
+    {% if page_obj.has_next %}
+      <a class="page-link" href="?page={{page_obj.next_page_number}}">></a>
+      {% endif %}
+    </li>
+  </ul>
+</nav>
+
+  {% endif %}
+
+
+
+
+ <style>
+    .page-link {
+      background-color: #ddd;
+      color: black;
+    }
+
+    .next {
+      background-color: #ddd;
+      color: black;
+    }
+
+    .previous {
+      background-color: #ddd;
+      color: black;
+    }
+
+    .round {
+      border-radius: 50%;
+    }
+  </style>
+
+            </div>
+            </div>
+            </div>
+
+{% endblock %}

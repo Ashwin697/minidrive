@@ -1,0 +1,68 @@
+{% extends "./base.html" %}
+
+{% block encrypt %}active{% endblock encrypt %}
+
+{% block title %} Uplloads - Filesystem{% endblock %}
+
+{% block body %}
+
+
+<div class="container my-2">
+  <div class="row justify-content-center">
+    <div class="title col-12 col-lg-8">
+      <h1 class="mbr-section-title align-center pb-3 mbr-fonts-style display-2">Store Your Files</h1>
+      <hr>
+      <form class="md-form my-4" action="/file" method="post" enctype="multipart/form-data">{% csrf_token %}
+
+
+        <div class="form-group ">
+          <label for="name">File Name :</label>
+          <input type="text" class="form-control col-md-8" id="ename" name='ename' placeholder="Enter File Name"
+            required>
+        </div>
+        <hr>
+
+        <div class="form-group my-4 ">
+          <label>Choose File to Save :</label>
+          <input type="file" id="files" name="files" multiple="multiple" required>
+</div>
+
+        {% if  user.is_authenticated %}
+
+        
+
+        <div class="form-group my-4 ">
+          <hr>
+          <button class="btn btn-success" type="submit">Save</button>
+        </div>
+    </div>
+    </form>
+    <div class="my-2">
+      <a href="/store"> <button class="btn btn-success ">View Stored Files</button></a>
+    </div>
+
+    {% else %}
+
+
+    <hr>
+   <button type="button" class="btn btn-success mr-2" data-toggle="modal" data-target="#loginModal">
+          Save
+        </button>
+  </div>
+</div>
+</div>
+
+{% endif %}
+
+
+
+
+
+
+
+
+
+
+
+
+{% endblock %}
