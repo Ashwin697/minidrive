@@ -29,8 +29,8 @@ def contact(request):
             messages.success(request,"Message  sent Sucessfully")
 
             #sending mail to update
-            fromaddr = 'kaalv069@gmail.com'
-            toaddrs  =  "kanojiaashwin18@gmail.com"
+            fromaddr = 'email'
+            toaddrs  =  "to email"
 
             # Gmail Login
             username = 'your email id'
